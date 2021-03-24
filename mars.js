@@ -35,7 +35,7 @@ const animate = () => { // Une boucle de rendu de scène
     mesh.rotation.y -= 0.001;
 };
 
-if ('ontouchstart' in window) {
+if ('ontouchmove' in window) {
     document.addEventListener('touchmove', (e) => { // Ajout de l'interaction avec la souris
         camera.position.x = (e.x - (window.innerWidth / 2)) * 0.005;
         camera.position.y = (e.y - (window.innerWidth / 2)) * 0.005;
