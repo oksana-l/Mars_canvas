@@ -35,16 +35,19 @@ const animate = () => { // Une boucle de rendu de scène
     mesh.rotation.y -= 0.001;
 };
 
-document.addEventListener('mousemove', (e) => { // Ajout de l'interaction avec la souris
+if ('ontouchstart' in window) {
+    document.addEventListener('touchmove', (e) => { // Ajout de l'interaction avec la souris
+        camera.position.x = (e.x - (window.innerWidth / 2)) * 0.005;
+        camera.position.y = (e.y - (window.innerWidth / 2)) * 0.005;
+        camera.lookAt(scene.position);
+    });
+}
+else {
+    document.addEventListener('mousemove', (e) => { // Ajout de l'interaction avec la souris
     camera.position.x = (e.x - (window.innerWidth / 2)) * 0.005;
     camera.position.y = (e.y - (window.innerWidth / 2)) * 0.005;
     camera.lookAt(scene.position);
-});
-
-document.addEventListener('touchmove', (e) => { // Ajout de l'interaction avec la souris
-    camera.position.x = (e.x - (window.innerWidth / 2)) * 0.005;
-    camera.position.y = (e.y - (window.innerWidth / 2)) * 0.005;
-    camera.lookAt(scene.position);
-});
+    });
+}
 
 animate();
